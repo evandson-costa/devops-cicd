@@ -1,0 +1,3 @@
+Este é o conteudo do meu primeiro arquivo no bash
+Este é o conteudo nova linha
+eu fiz outro teste mais facil
