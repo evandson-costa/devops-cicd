@@ -13,6 +13,45 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Mostrar mensagem de boas-vindas
-      run: echo "Bem-vindo ao meu primeiro workflow de DevOps!"
+    - name: Build Aplication
+      run: echo "Building the application..."
+
+  dev: 
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Deploy to Dev
+      run: echo "Deploying to development environment..."
+
+  qa: 
+    runs-on: ubuntu-latest
+    needs: 
+      -dev
+
+    steps:
+    - name: Deploy to QA
+      run: echo "Deploying to QA environment..."
+
+  uat: 
+    runs-on: ubuntu-latest
+    needs: 
+      -qa
+      -dev
+
+    steps:
+    - name: Deploy to UAT
+      run: echo "Deploying to UAT environment..."
+
+  prod: 
+    runs-on: ubuntu-latest
+    needs: uat  
+
+    steps:
+    - name: Deploy to Prod
+      run: echo "Deploying to production environment..."
+  
+
+
+    
       
